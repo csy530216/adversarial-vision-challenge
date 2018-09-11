@@ -133,6 +133,8 @@ def _check_rate_limitation():
     logger.debug('Number of remaining max requests: %s',
                  number_of_max_predictions)
     number_of_max_predictions -= 1
+    if (number_of_max_predictions % 10 == 0):
+        logger.info(str(number_of_max_predictions))
     if (number_of_max_predictions < 0):
         logger.error('Maximal number of prediction requests exceeded: %s',
                      number_of_max_predictions)
